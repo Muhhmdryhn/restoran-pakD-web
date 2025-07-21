@@ -97,6 +97,7 @@ const ProfilePage = () => {
         Kembali
       </button>
 
+<div className="mt-10">
       <h2 className="text-2xl font-bold mb-6 text-center">Profil Pengguna</h2>
 
       <div className="space-y-4 mt-6">
@@ -140,7 +141,7 @@ const ProfilePage = () => {
           Ubah Password
         </button>
       </div>
-    </div>
+    </div></div>
   );
 };
 

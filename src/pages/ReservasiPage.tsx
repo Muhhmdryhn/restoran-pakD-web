@@ -27,7 +27,7 @@ const ReservationPage = () => {
         <ArrowLeft className="w-5 h-5 mr-1" />
         Kembali
       </button>
-
+<div className="mt-10">
       <h2 className="text-2xl font-bold text-center mb-6">Reservasi / Pemesanan</h2>
 
       <div className="space-y-4">
@@ -91,7 +91,7 @@ const ReservationPage = () => {
           Kirim ke Admin (WhatsApp)
         </button>
       </div>
-    </div>
+   </div> </div>
   );
 };
 
