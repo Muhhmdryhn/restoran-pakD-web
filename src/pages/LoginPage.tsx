@@ -3,27 +3,26 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth, provider } from "../Firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../assets/logo.png"; // Ganti path sesuai lokasi logo kamu
-import LogoGoole from "../assets/Logo_Google.png"; // Ganti path sesuai lokasi logo Google kamu
-import { ArrowLeft } from "lucide-react"; // pastikan kamu install lucide-react
+import Logo from "../assets/logo.png";
+import LogoGoole from "../assets/Logo_Google.png";
+import { ArrowLeft } from "lucide-react";
 
 const LoginPage = () => {
   const [user, setUser] = useState<any>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [isSignUp, setIsSignUp] = useState(false); // Toggle login/signup
+  const [isSignUp, setIsSignUp] = useState(false);
 
-  const navigate = useNavigate(); // untuk redirect
+  const navigate = useNavigate();
 
-  // Tombol kembali ke halaman sebelumnya
   const handleBack = () => {
-    navigate(-1); // kembali satu langkah
-    // Atau: navigate("/"); untuk kembali ke halaman landing
+    navigate(-1);
   };
 
   const handleGoogleLogin = async () => {
@@ -62,21 +61,31 @@ const LoginPage = () => {
     }
   };
 
+  // 🔥 Deteksi user sudah login pakai Firebase Auth
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("User masih login:", user);
+        navigate("/home");
+      }
+    });
+
+    return () => unsubscribe(); // cleanup listener saat komponen unmount
+  }, [navigate]);
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 relative">
-      {/* Tombol Kembali */}
-    <button
-      onClick={handleBack}
-      className="absolute top-4 left-4 flex items-center gap-2 text-red-600 hover:text-red-800 font-medium"
-    >
-      <Link to="/" className="flex items-center gap-2">
-        <ArrowLeft className="w-5 h-5" />
-        Kembali
-      </Link>
-    </button>
+      <button
+        onClick={handleBack}
+        className="absolute top-4 left-4 flex items-center gap-2 text-red-600 hover:text-red-800 font-medium"
+      >
+        <Link to="/" className="flex items-center gap-2">
+          <ArrowLeft className="w-5 h-5" />
+          Kembali
+        </Link>
+      </button>
 
       <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-md text-center">
-        {/* Logo */}
         <img
           src={Logo}
           alt="Logo Restoran"
@@ -142,16 +151,15 @@ const LoginPage = () => {
               onClick={handleGoogleLogin}
               className="w-full bg-white border hover:bg-gray-100 text-gray-800 font-semibold py-2 rounded flex items-center justify-center gap-2"
             >
-              <img
-                src={LogoGoole}
-                alt="Google"
-                className="w-5 h-5"
-              />
+              <img src={LogoGoole} alt="Google" className="w-5 h-5" />
               Login dengan Google
             </button>
 
             <div className="mt-4">
-              <a href="/forgot-password" className="text-sm text-red-600 hover:underline">
+              <a
+                href="/forgot-password"
+                className="text-sm text-red-600 hover:underline"
+              >
                 Lupa Password?
               </a>
             </div>
