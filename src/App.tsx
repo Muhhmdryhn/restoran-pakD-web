@@ -9,6 +9,7 @@ import LandingPage from './pages/LandingPage'
 import MenuPage from './pages/MenuPage'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
+import PesanPage from './pages/PesanPage'
 
 function App() {
 
@@ -17,8 +18,10 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage/>} />
-        <Route path="/home" element={<HomePage/>} />
-        <Route path="/menu" element={<MenuPage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/home" element={<HomePage/>} />
+          <Route path="/pesan" element={<PesanPage />} />
+      
       </Routes>
     </>
   )
