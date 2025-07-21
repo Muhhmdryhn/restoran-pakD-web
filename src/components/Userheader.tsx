@@ -52,9 +52,6 @@ const UserHeader = ({ user }: { user: any }) => {
           <button onClick={() => navigate("/profil")} className="hover:text-yellow-300">
             <FaUser className="inline mr-1" /> Profil
           </button>
-          <button onClick={() => navigate("/kerjasama")} className="hover:text-yellow-300">
-            <FaHandshake className="inline mr-1" /> Kerja Sama
-          </button>
           <a
             href="https://wa.me/6281234567890"
             target="_blank"
@@ -89,11 +86,6 @@ const UserHeader = ({ user }: { user: any }) => {
             <li>
               <button onClick={() => navigate("/profil")} className="hover:text-yellow-300">
                 <FaUser className="inline mr-1" /> Profil
-              </button>
-            </li>
-            <li>
-              <button onClick={() => navigate("/kerjasama")} className="hover:text-yellow-300">
-                <FaHandshake className="inline mr-1" /> Kerja Sama
               </button>
             </li>
             <li>

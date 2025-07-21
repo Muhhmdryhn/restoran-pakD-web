@@ -33,7 +33,7 @@ const PesanPage = () => {
 
         {/* Catering Service */}
         <div
-          onClick={() => navigate("/catering")}
+          onClick={() => navigate("/catering-service")}
           className="bg-white hover:bg-red-50 shadow-lg rounded-xl p-6 text-center cursor-pointer transition duration-300"
         >
           <img
@@ -51,7 +51,7 @@ const PesanPage = () => {
 
         {/* Menu Bayar */}
         <div
-          onClick={() => navigate("/bayar")}
+          onClick={() => navigate("/hutang")}
           className="bg-white hover:bg-red-50 shadow-lg rounded-xl p-6 text-center cursor-pointer transition duration-300"
         >
           <img
@@ -59,7 +59,7 @@ const PesanPage = () => {
             alt="Bayar"
             className="w-20 h-20 mx-auto mb-4"
           />
-          <h2 className="text-xl font-semibold text-red-600 mb-2">Bayar</h2>
+          <h2 className="text-xl font-semibold text-red-600 mb-2">Hutang</h2>
           <p className="text-gray-600 text-sm">
             Selesaikan transaksi dan pantau status pembayaran Anda.
           </p>
