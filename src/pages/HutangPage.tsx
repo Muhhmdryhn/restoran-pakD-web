@@ -48,6 +48,15 @@ const HutangPage = () => {
 
   const totalTunggakan = hutangList.reduce((acc, curr) => acc + curr.total, 0);
 
+  const handleBayarQRIS = () => {
+    const orderData = {
+      total: totalTunggakan,
+      source: "hutang",
+    };
+    localStorage.setItem("pendingOrder", JSON.stringify(orderData));
+    navigate("/bayar-qris");
+  };
+
   return (
     <div className="max-w-lg mx-auto p-6 bg-white shadow-md mt-10 rounded relative">
       {/* Tombol Kembali */}
@@ -73,7 +82,7 @@ const HutangPage = () => {
 
           <div className="flex justify-center mt-4">
             <button
-              onClick={() => navigate("/bayar-qris")}
+              onClick={handleBayarQRIS}
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow"
             >
               Bayar dengan QRIS

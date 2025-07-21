@@ -86,7 +86,7 @@ const OrderPage = () => {
       navigate("/bayar-qris");
     } else if (paymentMethod === "COD") {
       alert("Pesanan Anda akan segera diantar dan dibayar di tempat.");
-      navigate("/beranda");
+      navigate("/home");
     } else if (paymentMethod === "HUTANG") {
       try {
         await addDoc(collection(db, "hutang"), {
@@ -169,7 +169,7 @@ const OrderPage = () => {
             className="border rounded px-3 py-2 w-full"
           >
             <option value="QRIS">QRIS</option>
-            <option value="COD">Cash On Delivery (COD)</option>
+            <option value="COD">Cash</option>
             <option value="HUTANG">Hutang</option>
           </select>
         </div>
